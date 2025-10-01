@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Aurora Coffee Roasters | Home</title>
+  <script src='https://cdn.tailwindcss.com'></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6B4B2A',
+            secondary: '#D9A373',
+            accent: '#C79A63'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fadeIn { animation: fadeIn 0.6s ease-out forwards; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class='font-sans antialiased'>
+  <!-- Navigation -->
+  <nav class='fixed w-full bg-white shadow-md z-50' aria-label='Main Navigation'>
+    <div class='container mx-auto px-6 py-4'>
+      <div class='flex items-center justify-between'>
+        <div class='text-2xl font-bold text-primary'>Aurora Coffee Roasters</div>
+        <div class='hidden md:flex items-center space-x-8'>
+          <a href='index.html' class='hover:text-primary transition'>Home</a>
+          <a href='about.html' class='hover:text-primary transition'>About</a>
+          <a href='menu.html' class='hover:text-primary transition'>Menu</a>
+          <a href='shop.html' class='hover:text-primary transition'>Shop</a>
+          <a href='contact.html' class='hover:text-primary transition'>Contact</a>
+        </div>
+        <button id='mobile-menu-btn' class='md:hidden' aria-label='Open menu' aria-controls='mobile-menu' aria-expanded='false'>
+          <svg class='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16M4 18h16'/>
+          </svg>
+        </button>
+      </div>
+      <!-- Mobile menu -->
+      <div id='mobile-menu' class='hidden md:hidden pt-2 pb-2'>
+        <a href='index.html' class='block py-2 hover:text-primary'>Home</a>
+        <a href='about.html' class='block py-2 hover:text-primary'>About</a>
+        <a href='menu.html' class='block py-2 hover:text-primary'>Menu</a>
+        <a href='shop.html' class='block py-2 hover:text-primary'>Shop</a>
+        <a href='contact.html' class='block py-2 hover:text-primary'>Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      const m = document.getElementById('mobile-menu');
+      const btn = document.getElementById('mobile-menu-btn');
+      m.classList.toggle('hidden');
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+    });
+  </script>
+
+  <!-- Hero Section -->
+  <section class='relative h-screen flex items-center justify-center bg-gradient-to-br from-primary to-secondary'>
+    <div class='absolute inset-0' aria-label='Coffee background' style="background-image: url('https://picsum.photos/seed/coffee-house/1600/900'); background-size: cover; background-position: center; filter: brightness(0.6);"></div>
+    <div class='relative z-10 text-center text-white px-6 animate-fadeIn'>
+      <h1 class='text-5xl md:text-7xl font-bold mb-6'>Morning rituals, crafted daily</h1>
+      <p class='text-xl md:text-2xl mb-8 max-w-2xl mx-auto'>We roast small-batch coffees with care—from farm to cup. Experience notes of chocolate, caramel, and citrus in every sip.</p>
+      <div class='flex items-center justify-center space-x-4'>
+        <a href='menu.html' class='inline-block bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition'>View Menu</a>
+        <a href='shop.html' class='inline-block bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition'>Shop Beans</a>
+      </div>
+    </div>
+  </section>
+
+  <main class='pt-20'>
+    <!-- Featured Beans -->
+    <section id='beans' class='py-20'>
+      <div class='container mx-auto px-6'>
+        <h2 class='text-4xl font-bold text-center mb-12'>Our Signature Beans</h2>
+        <div class='grid md:grid-cols-3 gap-10'>
+          <article class='bg-white rounded-xl shadow-lg overflow-hidden animate-fadeIn'>
+            <img src='https://picsum.photos/seed/bean1/800/500' alt='Colombia Supremo beans' class='w-full h-48 object-cover'>
+            <div class='p-6'>
+              <h3 class='text-xl font-bold mb-2'>Colombia Supremo</h3>
+              <p class='text-gray-600'>Bright, fruity acidity with cocoa and cherry notes. Ideal for pour-over.</p>
+              <p class='mt-2 font-semibold'>Roast level: Light</p>
+            </div>
+          </article>
+          <article class='bg-white rounded-xl shadow-lg overflow-hidden animate-fadeIn'>
+            <img src='https://picsum.photos/seed/bean2/800/500' alt='Ethiopian Yirgacheffe beans' class='w-full h-48 object-cover'>
+            <div class='p-6'>
+              <h3 class='text-xl font-bold mb-2'>Ethiopian Yirgacheffe</h3>
+              <p class='text-gray-600'>Floral aroma with lemongrass and blueberry notes. Great for late mornings.</p>
+              <p class='mt-2 font-semibold'>Roast level: Medium</p>
+            </div>
+          </article>
+          <article class='bg-white rounded-xl shadow-lg overflow-hidden animate-fadeIn'>
+            <img src='https://picsum.photos/seed/bean3/800/500' alt='Guatemalan Altitude Reserve' class='w-full h-48 object-cover'>
+            <div class='p-6'>
+              <h3 class='text-xl font-bold mb-2'>Guatemala Altitude Reserve</h3>
+              <p class='text-gray-600'>Balanced cup with caramel sweetness and chocolate hints. Perfect espresso base.</p>
+              <p class='mt-2 font-semibold'>Roast level: Medium-Dark</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visit/Hours -->
+    <section id='hours' class='py-16 bg-gray-50'>
+      <div class='container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center'>
+        <div class='animate-fadeIn'>
+          <h2 class='text-3xl font-bold mb-4'>Visit Us</h2>
+          <p class='text-gray-700'>Aurora Coffee Roasters sits in the heart of the city, a cozy space for a slow cup or a quick pick-me-up. Enjoy free Wi‑Fi, live roasts on Saturdays, and a rotating pastry selection from local bakers.</p>
+          <ul class='mt-4 text-gray-700'>
+            <li>Address: 128 Lightwave Ave, Seattle, WA</li>
+            <li>Hours: Mon–Fri 7:00–18:00 | Sat–Sun 8:00–20:00</li>
+            <li>Phone: (206) 555-0147</li>
+          </ul>
+        </div>
+        <div class='animate-fadeIn'>
+          <img src='https://picsum.photos/seed/coffee-store/800/600' alt='Cozy coffee shop interior' class='w-full rounded-xl shadow-lg'>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section id='newsletter' class='py-16'>
+      <div class='container mx-auto px-6 text-center'>
+        <h2 class='text-3xl font-bold mb-4'>Get Coffee News and Fresh Roasts</h2>
+        <p class='mb-6 text-gray-700'>Join our newsletter for exclusive roasts, event invites, and seasonal blends.</p>
+        <form id='newsletter-form' class='flex flex-col sm:flex-row justify-center items-center gap-4' aria-label='Newsletter signup'>
+          <input type='email' name='email' placeholder='Your email address' required class='w-full sm:w-auto px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary' aria-label='Email address'>
+          <button type='submit' class='bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition'>Subscribe</button>
+        </form>
+        <div id='newsletter-msg' class='hidden mt-4 p-3 rounded-lg bg-green-100 text-green-800'></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class='bg-gray-900 text-white py-12'>
+    <div class='container mx-auto px-6'>
+      <div class='grid md:grid-cols-4 gap-8'>
+        <div>
+          <h3 class='text-xl font-bold mb-4'>Aurora Coffee Roasters</h3>
+          <p class='text-gray-400'>Small-batch roastery crafting warm, inviting coffees from around the world.</p>
+        </div>
+        <div>
+          <h4 class='font-semibold mb-4'>Quick Links</h4>
+          <ul class='space-y-2 text-gray-400'>
+            <li><a href='index.html' class='hover:text-white transition'>Home</a></li>
+            <li><a href='about.html' class='hover:text-white transition'>About</a></li>
+            <li><a href='menu.html' class='hover:text-white transition'>Menu</a></li>
+            <li><a href='shop.html' class='hover:text-white transition'>Shop</a></li>
+            <li><a href='contact.html' class='hover:text-white transition'>Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class='font-semibold mb-4'>Contact</h4>
+          <ul class='space-y-2 text-gray-400'>
+            <li>Email: hello@auroracoffee.example</li>
+            <li>Phone: (206) 555-0147</li>
+            <li>Location: Seattle, WA</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class='font-semibold mb-4'>Follow Us</h4>
+          <div class='flex space-x-4'>
+            <a href='#' class='text-gray-400 hover:text-white transition' aria-label='Instagram'>
+              <svg class='w-6 h-6' fill='currentColor' viewBox='0 0 24 24'>
+                <path d='M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2A3 3 0 0 0 4 7v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z'/>
+              </svg>
+            </a>
+            <a href='#' class='text-gray-400 hover:text-white transition' aria-label='Twitter'>
+              <svg class='w-6 h-6' fill='currentColor' viewBox='0 0 24 24'>
+                <path d='M23 3a10.9 10.9 0 0 1-3.14 1.53A4.48 4.48 0 0 0 22.4 1.5 9 9 0 0 1 3 4.72a12 12 0 0 0 8.29-4.75A4.5 4.5 0 0 0 8 6.2a4.5 4.5 0 0 1-2-.55v.05a4.5 4.5 0 0 0 3.6 4.41 4.5 4.5 0 0 1-2 .08 4.5 4.5 0 0 0 4.2 3.12A9 9 0 0 1 1.5 19.54 12 12 0 0 0 8 21c7.5 0 11.6-6.22 11.6-11.62 0-.18-.01-.36-.02-.54A8.2 8.2 0 0 0 23 3z'/>
+              </svg>
+            </a>
+            <a href='#' class='text-gray-400 hover:text-white transition' aria-label='Facebook'>
+              <svg class='w-6 h-6' fill='currentColor' viewBox='0 0 24 24'>
+                <path d='M22 12a10 10 0 1 0-11.5 9.95v-7.04H8.9V12h2.6V9.8c0-2.58 1.54-4 3.89-4 1.13 0 2.31.2 2.31.2v2.54h-1.3c-1.28 0-1.68.79-1.68 1.6V12h2.86l-.46 2.91h-2.4v7.04A10 10 0 0 0 22 12z'/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class='border-t border-gray-800 mt-8 pt-6 text-center text-gray-400'>
+        <p>&copy; 2024 Aurora Coffee Roasters. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Newsletter form (basic validation and fake success)
+    document.getElementById('newsletter-form')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input[name="email"]').value;
+      const msg = document.getElementById('newsletter-msg');
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (re.test(email)) {
+        msg.textContent = 'Thanks for subscribing! Check your email for a confirmation.';
+        msg.className = 'hidden mt-4 p-3 rounded-lg bg-green-100 text-green-800';
+        msg.classList.remove('hidden');
+        this.reset();
+      } else {
+        msg.textContent = 'Please enter a valid email address.';
+        msg.className = 'hidden mt-4 p-3 rounded-lg bg-red-100 text-red-800';
+        msg.classList.remove('hidden');
+      }
+    });
+
+    // Basic scroll animations for sections
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('animate-fadeIn'); }
+      });
+    }, observerOptions);
+    document.querySelectorAll('section').forEach(sec => observer.observe(sec));
+  </script>
+
+  <!-- Google Analytics 4 (placeholder ID to be replaced) -->
+  <script async src='https://www.googletagmanager.com/gtag/js?id=G-XYZ1234'></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}    
+    gtag('js', new Date());
+    gtag('config', 'G-XYZ1234');
+  </script>
+</body>
+</html>

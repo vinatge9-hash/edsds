@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Shop | Aurora Coffee Roasters</title>
+  <script src='https://cdn.tailwindcss.com'></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: '#6B4B2A', secondary: '#D9A373' } } } }
+  </script>
+  <style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fadeIn { animation: fadeIn 0.6s ease-out forwards; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class='font-sans antialiased'>
+  <!-- Nav -->
+  <nav class='fixed w-full bg-white shadow-md z-50' aria-label='Main Navigation'>
+    <div class='container mx-auto px-6 py-4'>
+      <div class='flex items-center justify-between'>
+        <div class='text-2xl font-bold text-primary'>Aurora Coffee Roasters</div>
+        <div class='hidden md:flex items-center space-x-8'>
+          <a href='index.html' class='hover:text-primary'>Home</a>
+          <a href='about.html' class='hover:text-primary'>About</a>
+          <a href='menu.html' class='hover:text-primary'>Menu</a>
+          <a href='shop.html' class='hover:text-primary'>Shop</a>
+          <a href='contact.html' class='hover:text-primary'>Contact</a>
+        </div>
+        <button id='mobile-menu-btn' class='md:hidden' aria-label='Open menu' aria-controls='mobile-menu' aria-expanded='false'>
+          <svg class='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16M4 18h16'/>
+          </svg>
+        </button>
+      </div>
+      <div id='mobile-menu' class='hidden md:hidden pt-2 pb-2'>
+        <a href='index.html' class='block py-2'>Home</a>
+        <a href='about.html' class='block py-2'>About</a>
+        <a href='menu.html' class='block py-2'>Menu</a>
+        <a href='shop.html' class='block py-2'>Shop</a>
+        <a href='contact.html' class='block py-2'>Contact</a>
+      </div>
+    </div>
+  </nav>
+  <script>
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+
+  <!-- Hero -->
+  <section class='relative h-72 flex items-center justify-center bg-gradient-to-br from-primary to-secondary'>
+    <div class='absolute inset-0' style="background-image: url('https://picsum.photos/seed/shop-hero/1600/900'); background-size: cover; background-position: center; opacity: .95;"></div>
+    <div class='relative z-10 text-center text-white px-6'>
+      <h1 class='text-3xl md:text-4xl font-bold'>Shop Beans & Merch</h1>
+      <p class='mt-1'>Fresh roasted beans, gift sets, and gear to elevate your at-home coffee ritual.</p>
+    </div>
+  </section>
+
+  <main class='container mx-auto px-6 -mt-8 mb-16'>
+    <section id='products' class='bg-white rounded-xl shadow-lg p-6 animate-fadeIn'>
+      <div class='flex items-center justify-between mb-4'>
+        <h2 class='text-3xl font-bold'>Product Catalog</h2>
+        <span class='text-gray-600'>Total items: 6</span>
+      </div>
+      <div class='grid md:grid-cols-3 gap-6'>
+        <!-- Product 1 -->
+        <div class='border rounded-lg p-4'>
+          <img src='https://picsum.photos/seed/espresso2/600/350' alt='Espresso Reserve' class='w-full h-40 object-cover rounded-md'>
+          <h3 class='mt-3 font-semibold'>Espresso Reserve</h3>
+          <p class='text-gray-600 text-sm'>Rich, syrupy espresso blend for home pullers.</p>
+          <p class='mt-2 font-semibold'>$14.00 / 12 oz</p>
+          <button class='mt-3 w-full bg-primary text-white py-2 rounded-lg'>Add to Cart</button>
+        </div>
+        <!-- Product 2 -->
+        <div class='border rounded-lg p-4'>
+          <img src='https://picsum.photos/seed/drip2/600/350' alt='Morning Drip' class='w-full h-40 object-cover rounded-md'>
+          <h3 class='mt-3 font-semibold'>Morning Drip</h3>
+          <p class='text-gray-600 text-sm'>Bright and clean; perfect for a daily ritual.</p>
+          <p class='mt-2 font-semibold'>$12.50 / 12 oz</p>
+          <button class='mt-3 w-full bg-primary text-white py-2 rounded-lg'>Add to Cart</button>
+        </div>
+        <!-- Product 3 -->
+        <div class='border rounded-lg p-4'>
+          <img src='https://picsum.photos/seed/ethiopia2/600/350' alt='Ethiopian Yirgacheffe' class='w-full h-40 object-cover rounded-md'>
+          <h3 class='mt-3 font-semibold'>Ethiopia Yirgacheffe</h3>
+          <p class='text-gray-600 text-sm'>Floral, citrus, and tea-like sweetness.</p>
+          <p class='mt-2 font-semibold'>$16.00 / 12 oz</p>
+          <button class='mt-3 w-full bg-primary text-white py-2 rounded-lg'>Add to Cart</button>
+        </div>
+      </div>
+      <div class='mt-6 text-right'>
+        <a href='contact.html' class='inline-block bg-secondary text-white px-4 py-2 rounded-lg'>Request Wholesale Info</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class='bg-gray-900 text-white py-12'>
+    <div class='container mx-auto px-6'>
+      <p class='text-center text-gray-400'>© 2024 Aurora Coffee Roasters — Seattle, WA</p>
+    </div>
+  </footer>
+
+  <script>
+    // Simple cart behavior for demo
+    document.querySelectorAll('button').forEach(b => {
+      if (b.textContent.trim() === 'Add to Cart') {
+        b.addEventListener('click', () => {
+          const count = Number(localStorage.getItem('cartCount') || 0) + 1;
+          localStorage.setItem('cartCount', count);
+          // Minimal toast
+          const t = document.createElement('div');
+          t.textContent = 'Added to cart (' + count + ')';
+          t.style.position = 'fixed'; t.style.bottom = '20px'; t.style.right = '20px';
+          t.style.background = '#6B4B2A'; t.style.color = '#fff'; t.style.padding = '10px 14px';
+          t.style.borderRadius = '8px'; t.style.zIndex = '9999';
+          document.body.appendChild(t);
+          setTimeout(() => t.remove(), 1500);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

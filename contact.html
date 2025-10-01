@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Contact | Aurora Coffee Roasters</title>
+  <script src='https://cdn.tailwindcss.com'></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: '#6B4B2A', secondary: '#D9A373' } } } }
+  </script>
+  <style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fadeIn { animation: fadeIn 0.6s ease-out forwards; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class='font-sans antialiased'>
+  <!-- Nav -->
+  <nav class='fixed w-full bg-white shadow-md z-50' aria-label='Main Navigation'>
+    <div class='container mx-auto px-6 py-4'>
+      <div class='flex items-center justify-between'>
+        <div class='text-2xl font-bold text-primary'>Aurora Coffee Roasters</div>
+        <div class='hidden md:flex items-center space-x-8'>
+          <a href='index.html' class='hover:text-primary'>Home</a>
+          <a href='about.html' class='hover:text-primary'>About</a>
+          <a href='menu.html' class='hover:text-primary'>Menu</a>
+          <a href='shop.html' class='hover:text-primary'>Shop</a>
+          <a href='contact.html' class='hover:text-primary'>Contact</a>
+        </div>
+        <button id='mobile-menu-btn' class='md:hidden' aria-label='Open menu' aria-controls='mobile-menu' aria-expanded='false'>
+          <svg class='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16M4 18h16'/>
+          </svg>
+        </button>
+      </div>
+      <div id='mobile-menu' class='hidden md:hidden pt-2 pb-2'>
+        <a href='index.html' class='block py-2'>Home</a>
+        <a href='about.html' class='block py-2'>About</a>
+        <a href='menu.html' class='block py-2'>Menu</a>
+        <a href='shop.html' class='block py-2'>Shop</a>
+        <a href='contact.html' class='block py-2'>Contact</a>
+      </div>
+    </div>
+  </nav>
+  <script>
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+
+  <!-- Hero -->
+  <section class='relative h-72 flex items-center justify-center bg-gradient-to-br from-primary to-secondary'>
+    <div class='absolute inset-0' style="background-image: url('https://picsum.photos/seed/contact-hero/1600/900'); background-size: cover; background-position: center; opacity: .95;"></div>
+    <div class='relative z-10 text-center text-white px-6'>
+      <h1 class='text-3xl md:text-4xl font-bold'>Get in Touch</h1>
+      <p class='mt-2'>We’d love to hear from you. Reach out with questions, wholesale inquiries, or feedback.</p>
+    </div>
+  </section>
+
+  <main class='container mx-auto px-6'>
+    <section id='contact-form' class='py-12'>
+      <div class='grid md:grid-cols-2 gap-8'>
+        <div>
+          <h2 class='text-3xl font-bold mb-4'>Contact Form</h2>
+          <form id='form' class='space-y-4' aria-label='Contact form'>
+            <div>
+              <label class='block text-sm font-semibold mb-1'>Name</label>
+              <input type='text' required class='w-full px-4 py-3 border border-gray-300 rounded-lg' aria-label='Your name'>
+            </div>
+            <div>
+              <label class='block text-sm font-semibold mb-1'>Email</label>
+              <input type='email' required class='w-full px-4 py-3 border border-gray-300 rounded-lg' aria-label='Your email'>
+            </div>
+            <div>
+              <label class='block text-sm font-semibold mb-1'>Message</label>
+              <textarea rows='5' required class='w-full px-4 py-3 border border-gray-300 rounded-lg' aria-label='Your message'></textarea>
+            </div>
+            <!-- Honeypot anti-spam field -->
+            <div style='position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;'><label>Leave empty</label><input name='website' tabindex='-1' autocomplete='off'></div>
+            <button type='submit' class='bg-primary text-white px-6 py-3 rounded-lg'>Send Message</button>
+          </form>
+          <div id='form-message' class='hidden mt-4 p-3 rounded-lg'></div>
+        </div>
+        <div>
+          <h2 class='text-3xl font-bold mb-4'>Our Location</h2>
+          <p class='text-gray-700 mb-2'>Aurora Coffee Roasters</p>
+          <p class='text-gray-700 mb-2'>128 Lightwave Ave, Seattle, WA</p>
+          <p class='text-gray-700 mb-4'>Open Mon–Fri 7:00–18:00, Sat–Sun 8:00–20:00</p>
+          <div class='rounded-lg overflow-hidden shadow-lg'>
+            <iframe
+              src='https://www.google.com/maps?q=Aurora+Coffee+Roasters+Seattle&output=embed'
+              width='100%' height='240' frameborder='0' style='border:0' allowfullscreen='' aria-label='Map to Aurora Coffee Roasters'>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class='bg-gray-900 text-white py-12'>
+    <div class='container mx-auto px-6'>
+      <p class='text-center text-gray-400'>© 2024 Aurora Coffee Roasters</p>
+    </div>
+  </footer>
+
+  <script>
+    // Contact form validation and anti-spam
+    document.getElementById('form')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.querySelector('input[type="text"]').value.trim();
+      const email = form.querySelector('input[type="email"]').value.trim();
+      const msg = form.querySelector('textarea').value.trim();
+      const honeypot = form.querySelector('input[name="website"]').value;
+      const feedback = document.getElementById('form-message');
+      if (honeypot) {
+        // likely bot; silently fail
+        return;
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!name || !emailRegex.test(email) || !msg) {
+        feedback.textContent = 'Please complete all fields with a valid email address.';
+        feedback.className = 'hidden mt-4 p-3 rounded-lg bg-red-100 text-red-800';
+        feedback.classList.remove('hidden');
+        return;
+      }
+      feedback.textContent = 'Thanks for reaching out! We will respond within 1–2 business days.';
+      feedback.className = 'hidden mt-4 p-3 rounded-lg bg-green-100 text-green-800';
+      feedback.classList.remove('hidden');
+      form.reset();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>About Us | Aurora Coffee Roasters</title>
+  <script src='https://cdn.tailwindcss.com'></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { primary: '#6B4B2A', secondary: '#D9A373', accent: '#C79A63' } } }
+    }
+  </script>
+  <style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fadeIn { animation: fadeIn 0.6s ease-out forwards; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class='font-sans antialiased'>
+  <!-- Navigation -->
+  <nav class='fixed w-full bg-white shadow-md z-50' aria-label='Main Navigation'>
+    <div class='container mx-auto px-6 py-4'>
+      <div class='flex items-center justify-between'>
+        <div class='text-2xl font-bold text-primary'>Aurora Coffee Roasters</div>
+        <div class='hidden md:flex items-center space-x-8'>
+          <a href='index.html' class='hover:text-primary transition'>Home</a>
+          <a href='about.html' class='hover:text-primary transition'>About</a>
+          <a href='menu.html' class='hover:text-primary transition'>Menu</a>
+          <a href='shop.html' class='hover:text-primary transition'>Shop</a>
+          <a href='contact.html' class='hover:text-primary transition'>Contact</a>
+        </div>
+        <button id='mobile-menu-btn' class='md:hidden' aria-label='Open menu' aria-controls='mobile-menu' aria-expanded='false'>
+          <svg class='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
+            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16M4 18h16'/>
+          </svg>
+        </button>
+      </div>
+      <div id='mobile-menu' class='hidden md:hidden pt-2 pb-2'>
+        <a href='index.html' class='block py-2 hover:text-primary'>Home</a>
+        <a href='about.html' class='block py-2 hover:text-primary'>About</a>
+        <a href='menu.html' class='block py-2 hover:text-primary'>Menu</a>
+        <a href='shop.html' class='block py-2 hover:text-primary'>Shop</a>
+        <a href='contact.html' class='block py-2 hover:text-primary'>Contact</a>
+      </div>
+    </div>
+  </nav>
+  <script>
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      const m = document.getElementById('mobile-menu');
+      const btn = document.getElementById('mobile-menu-btn');
+      m.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', m.classList.contains('hidden') ? 'false' : 'true');
+    });
+  </script>
+
+  <!-- Hero -->
+  <section class='relative h-screen flex items-center justify-center bg-gradient-to-br from-primary to-secondary'>
+    <div class='absolute inset-0' style="background-image: url('https://picsum.photos/seed/roaster/1600/900'); background-size: cover; background-position: center; filter: brightness(0.6);"></div>
+    <div class='relative z-10 text-center text-white px-6'>
+      <h1 class='text-5xl md:text-6xl font-bold mb-4'>The Story Behind Every Cup</h1>
+      <p class='text-xl md:text-2xl mb-6 max-w-2xl mx-auto'>From seed to sip, we obsess over flavor, sustainability, and community. Meet the roasters who bring boldness to every batch.</p>
+    </div>
+  </section>
+
+  <main class='pt-20'>
+    <section id='our-story' class='py-16'>
+      <div class='container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center'>
+        <div class='animate-fadeIn'>
+          <h2 class='text-3xl font-bold mb-4'>Our Roasting Philosophy</h2>
+          <p class='text-gray-700'>We pair traditional craft with science. Our head roaster tests profiles daily, aiming for balance, clarity, and aroma. Our beans are sourced directly from cooperative farms and small-holders who share our commitment to fair wages and sustainable farming.</p>
+        </div>
+        <img src='https://picsum.photos/seed/roaster-story/800/600' alt='Roaster at work' class='w-full rounded-xl shadow-lg'>
+      </div>
+    </section>
+
+    <section id='team' class='py-16 bg-gray-50'>
+      <div class='container mx-auto px-6'>
+        <h2 class='text-3xl font-bold text-center mb-8'>Meet Our Team</h2>
+        <div class='grid md:grid-cols-3 gap-8'>
+          <div class='bg-white rounded-xl p-6 shadow-lg'>
+            <img src='https://picsum.photos/seed/roaster1/400/300' alt='Head roaster smiling' class='w-full h-40 object-cover rounded-md'>
+            <h3 class='mt-4 font-semibold text-lg'>Alex Rivera</h3>
+            <p class='text-gray-600'>Head Roaster with 12 years of cupping and profile development experience.</p>
+          </div>
+          <div class='bg-white rounded-xl p-6 shadow-lg'>
+            <img src='https://picsum.photos/seed/roaster2/400/300' alt='Barista at workstation' class='w-full h-40 object-cover rounded-md'>
+            <h3 class='mt-4 font-semibold text-lg'>Mika Chen</h3>
+            <p class='text-gray-600'>Sourcing lead, passionate about direct trade and sustainable farming.</p>
+          </div>
+          <div class='bg-white rounded-xl p-6 shadow-lg'>
+            <img src='https://picsum.photos/seed/roaster3/400/300' alt='Team member smiling' class='w-full h-40 object-cover rounded-md'>
+            <h3 class='mt-4 font-semibold text-lg'>Priya Kapoor</h3>
+            <p class='text-gray-600'>Barista trainer and customer experience designer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class='bg-gray-900 text-white py-12'>
+    <div class='container mx-auto px-6'>
+      <div class='grid md:grid-cols-2 gap-8'>
+        <div>
+          <h4 class='font-bold mb-2'>Newsletter</h4>
+          <p class='text-gray-400'>Get monthly roasts, tasting notes, and events.</p>
+        </div>
+        <div>
+          <form id='newsletter-form-2' class='flex space-x-2' aria-label='Newsletter signup'>
+            <input type='email' name='email' placeholder='Your email' required class='flex-1 px-4 py-2 rounded-lg border border-gray-700 bg-gray-800 text-white' />
+            <button type='submit' class='px-4 py-2 bg-primary text-white rounded-lg'>Join</button>
+          </form>
+          <div id='newsletter-msg-2' class='hidden mt-2 p-2 rounded-lg bg-green-100 text-green-800'></div>
+        </div>
+      </div>
+      <div class='border-t border-gray-800 mt-6 pt-6 text-center text-gray-400'>
+        <p>&copy; 2024 Aurora Coffee Roasters. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple newsletter handler
+    document.getElementById('newsletter-form-2')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input[name="email"]').value;
+      const msg = document.getElementById('newsletter-msg-2');
+      const re = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      if (re.test(email)) {
+        msg.textContent = 'Welcome to our coffee family!';
+        msg.className = 'hidden mt-2 p-2 rounded-lg bg-green-100 text-green-800';
+        msg.classList.remove('hidden');
+        this.reset();
+      } else {
+        msg.textContent = 'Please provide a valid email.';
+        msg.className = 'hidden mt-2 p-2 rounded-lg bg-red-100 text-red-800';
+        msg.classList.remove('hidden');
+      }
+    });
+  </script>
+
+  <!-- Google Analytics 4 (placeholder) -->
+  <script async src='https://www.googletagmanager.com/gtag/js?id=G-XYZ1234'></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} 
+    gtag('js', new Date());
+    gtag('config', 'G-XYZ1234');
+  </script>
+</body>
+</html>
